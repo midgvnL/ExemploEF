@@ -1,0 +1,164 @@
+﻿@model ExemploEF.Models.Categoria
+
+@{
+    ViewData["Title"] = "Editar";
+}
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Fundo suave e cores fofas */
+        body {
+            background-color: #f9e0d2; /* Rosa claro suave */
+            color: #6f4f37; /* Cor de texto suave */
+            font-family: 'Poppins', sans-serif; /* Fonte fofa e moderna */
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Estilo do título */
+        h1 {
+            color: #ff7b9b; /* Rosa claro e suave */
+            font-size: 3rem;
+            text-align: center;
+            margin-top: 50px;
+            text-transform: uppercase;
+            font-family: 'Dancing Script', cursive;
+            letter-spacing: 2px;
+        }
+
+        h4 {
+            color: #ff9fcf; /* Rosa bem suave */
+            font-size: 1.75rem;
+            text-align: center;
+            margin-bottom: 20px;
+            font-family: 'Dancing Script', cursive;
+        }
+
+        hr {
+            border-top: 2px solid #ff9fcf; /* Rosa claro */
+            width: 80%;
+            margin: 20px auto;
+        }
+
+        /* Formulário com bordas arredondadas e estilo suave */
+        .form-group label {
+            font-size: 1.1rem;
+            color: #ff6b81; /* Cor de texto suave */
+            font-weight: bold;
+        }
+
+        .form-group input {
+            border-radius: 25px;
+            border: 2px solid #ff6b81;
+            padding: 10px;
+            font-size: 1.125rem;
+            background-color: #fff;
+            transition: all 0.3s ease;
+        }
+
+            .form-group input:focus {
+                border-color: #ff7b9b; /* Rosa suave */
+                outline: none;
+            }
+
+        /* Estilo do botão "Salvar" */
+        .btn-primary {
+            background-color: #ff7b9b; /* Rosa claro */
+            border: none;
+            color: #fff;
+            font-size: 1.25rem;
+            padding: 12px 30px;
+            border-radius: 25px;
+            transition: background-color 0.3s ease;
+            box-shadow: 0 4px 10px rgba(255, 123, 155, 0.5);
+        }
+
+            .btn-primary:hover {
+                background-color: #ff9fcf; /* Rosa suave */
+                box-shadow: 0 4px 20px rgba(255, 159, 207, 0.6);
+            }
+
+        /* Link "Voltar para a lista" */
+        a {
+            color: #ff7b9b;
+            font-size: 1.125rem;
+            font-weight: bold;
+            text-decoration: none;
+            margin-top: 30px;
+            display: inline-block;
+            transition: color 0.3s ease;
+        }
+
+            a:hover {
+                color: #ff9fcf; /* Rosa suave */
+                text-decoration: underline;
+            }
+
+        /* Estilização de campos de validação */
+        .text-danger {
+            font-size: 1rem;
+            color: #ff6b81;
+        }
+
+        /* Estilizando o contêiner do formulário */
+        .container {
+            width: 60%;
+            margin: 50px auto;
+            padding: 30px;
+            background-color: #fff;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Adicionando um toque de decoração à página */
+        .decorative {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 1.25rem;
+            color: #ff6b81;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>@ViewData["Title"]</h1>
+        <h4>Categoria</h4>
+        <hr />
+
+        <div class="row">
+            <div class="col-md-12">
+                <form asp-action="Edit">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="CategoriaId" />
+                    <div class="form-group">
+                        <label asp-for="Nome" class="control-label">Nome da Categoria</label>
+                        <input asp-for="Nome" class="form-control" />
+                        <span asp-validation-for="Nome" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Salvar" class="btn btn-primary" />
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="decorative">
+            <a asp-action="Index">Voltar para a Lista</a>
+        </div>
+    </div>
+
+    @section Scripts {
+        @{
+            await Html.RenderPartialAsync("_ValidationScriptsPartial");
+        }
+    }
+
+</body>
+</html>

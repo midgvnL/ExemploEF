@@ -1,0 +1,177 @@
+﻿@model ExemploEF.Models.Categoria
+
+@{
+    ViewData["Title"] = "Deletar";
+}
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Estilo de fundo com textura de pergaminho */
+        body {
+            background: #f4f1e1 url('https://www.transparenttextures.com/patterns/old-wall.png') repeat;
+            font-family: 'Garamond', serif;
+            color: #3a2a20;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Título inspirado em Hogwarts */
+        h1 {
+            color: #c4a14e; /* Dourado, estilo das casas de Hogwarts */
+            font-size: 4rem;
+            text-align: center;
+            margin-top: 50px;
+            text-transform: uppercase;
+            font-family: 'Cinzel', serif;
+            text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
+            letter-spacing: 3px;
+        }
+
+        /* Estilo do subtítulo */
+        h3 {
+            color: #b14a2d; /* Cor de Gryffindor */
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 20px;
+            font-family: 'Cinzel', serif;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        hr {
+            border-top: 3px solid #c4a14e; /* Dourado */
+            width: 70%;
+            margin: 20px auto;
+        }
+
+        /* Formatação da tabela e seus itens */
+        dl.row {
+            color: #3a2a20;
+            font-size: 1.125rem;
+            margin: 20px 0;
+        }
+
+        dt {
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        dd {
+            font-style: italic;
+        }
+
+        /* Estilo do formulário e input */
+        form {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        /* Estilo do botão "Deletar" com visual de Hogwarts */
+        .btn-danger {
+            background-color: #c4a14e; /* Dourado */
+            border: 2px solid #b14a2d; /* Bordas de Gryffindor */
+            color: #fff;
+            font-size: 1.25rem;
+            padding: 12px 25px;
+            border-radius: 25px;
+            font-weight: bold;
+            text-transform: uppercase;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+
+            .btn-danger:hover {
+                background-color: #b14a2d; /* Cor de Gryffindor */
+                border-color: #c4a14e; /* Bordas douradas */
+                color: #fff;
+                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+            }
+
+        /* Estilo do link "Voltar para a Lista" */
+        a {
+            color: #b14a2d;
+            font-size: 1.25rem;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+            a:hover {
+                color: #ffcc00; /* Dourado quando o mouse passa */
+                text-decoration: underline;
+            }
+
+        /* Contêiner do formulário com bordas arredondadas */
+        .container {
+            width: 80%;
+            margin: 50px auto;
+            padding: 40px;
+            background-color: #fff;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            border: 2px solid #b14a2d; /* Bordas de Gryffindor */
+        }
+
+        /* Efeito de iluminação para um toque mágico */
+        .magical-effect {
+            text-align: center;
+            color: #ffcc00; /* Cor dourada brilhante */
+            font-size: 1.5rem;
+            margin-top: 30px;
+            font-family: 'Cinzel', serif;
+            text-shadow: 0 0 10px rgba(255, 204, 0, 0.6), 0 0 20px rgba(255, 204, 0, 0.6);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>@ViewData["Title"]</h1>
+        <h3>Tem certeza que deseja deletar este item?</h3>
+
+        <h4>Categoria</h4>
+        <hr />
+
+        <div class="row">
+            <div class="col-md-12">
+                <dl class="row">
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.Nome)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.Nome)
+                    </dd>
+                </dl>
+            </div>
+        </div>
+
+        <!-- Formulário para deletar com botão estilizado -->
+        <form asp-action="Delete">
+            <input type="hidden" asp-for="CategoriaId" />
+            <input type="submit" value="Deletar" class="btn btn-danger" />
+        </form>
+
+        <!-- Link para voltar para a lista -->
+        <div>
+            <a asp-action="Index">Voltar para a Lista</a>
+        </div>
+
+        <!-- Efeito mágico -->
+        <div class="magical-effect">
+            Cuidado com o que você apaga... a magia pode ser irreversível!
+        </div>
+    </div>
+
+    @section Scripts {
+        @{
+            await Html.RenderPartialAsync("_ValidationScriptsPartial");
+        }
+    }
+
+</body>
+</html>
