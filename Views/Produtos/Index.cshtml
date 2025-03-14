@@ -1,0 +1,181 @@
+﻿@model IEnumerable<ExemploEF.Models.Produto>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+
+
+   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Estilo personalizado -->
+    <style>
+        body {
+            background-color: #f3e5f5; /* Fundo roxo claro */
+            color: #5e35b1; /* Texto roxo escuro */
+            font-family: 'Arial', sans-serif;
+        }
+
+        h1 {
+            text-align: center;
+            color: #6a1b9a; /* Roxo forte para o título */
+            margin-top: 40px;
+            font-size: 2.5em;
+        }
+
+        h4 {
+            color: #8e24aa; /* Roxo suave para o subtítulo */
+            font-size: 1.8em;
+            margin-bottom: 20px;
+        }
+
+        hr {
+            border: 0;
+            height: 1px;
+            background-color: #ab47bc; /* Roxo intermediário para a linha */
+            width: 50%;
+            margin: 10px auto;
+        }
+
+        .form-group label {
+            color: #8e24aa;
+        }
+
+        .form-control {
+            background-color: #f3e5f5; /* Fundo suave */
+            border: 1px solid #ab47bc; /* Borda roxa */
+            color: #5e35b1; /* Texto roxo escuro */
+        }
+
+        .form-control:focus {
+            border-color: #7b1fa2; /* Roxo mais forte ao focar */
+            background-color: #e1bee7;
+            color: #5e35b1;
+        }
+
+        .btn-primary {
+            background-color: #8e24aa; /* Roxo suave */
+            border-color: #7b1fa2;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: #7b1fa2; /* Roxo mais escuro no hover */
+            border-color: #7b1fa2;
+        }
+
+        .btn-link {
+            color: #8e24aa;
+            text-decoration: none;
+        }
+
+        .btn-link:hover {
+            color: #6a1b9a; /* Roxo escuro no hover */
+            text-decoration: underline;
+        }
+
+        .row {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        .col-md-6 {
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 80%;
+        }
+
+        .col-md-6 a {
+            color: #8e24aa;
+            font-size: 1.2em;
+            display: inline-block;
+            margin-top: 20px;
+        }
+
+        .col-md-6 a:hover {
+            color: #6a1b9a;
+        }
+
+        /* Responsividade */
+        screen and (max-width: 768px) {
+            .col-md-6 {
+                width: 90%;
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+
+            h4 {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Link do Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>
+
+<body>
+    <h1>Criar Produto</h1>
+    <h2>o CSS NAO FUNCIONAAAAA</h2>
+
+    <p>
+        <a asp-action="Create">Criar Novo</a>
+    </p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Nome)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Estoque)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Categoria)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Nome)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Estoque)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Categoria.Nome)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.ProdutoId">Edit</a> |
+                        <a asp-action="Details" asp-route-id="@item.ProdutoId">Details</a> |
+                        <a asp-action="Delete" asp-route-id="@item.ProdutoId">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</body>
+
+

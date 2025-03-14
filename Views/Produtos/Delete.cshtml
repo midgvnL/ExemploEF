@@ -1,0 +1,187 @@
+﻿@model ExemploEF.Models.Produto
+
+@{
+    ViewData["Title"] = "Delete";
+}
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+
+<!-- Link do Bootstrap CSS -->
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Estilo personalizado -->
+<style>
+    body {
+        font-family: 'Arial', sans-serif;
+        background-color: #f4f7f6; /* Fundo suave */
+        color: #333; /* Cor de texto neutra */
+        margin: 0;
+        padding: 0;
+        line-height: 1.6;
+    }
+
+    h1 {
+        text-align: center;
+        color: #e57373; /* Vermelho suave para o título principal */
+        margin-top: 40px;
+        font-size: 2.5em;
+    }
+
+    h3 {
+        text-align: center;
+        color: #4e4e4e; /* Cor do texto secundário */
+        font-size: 1.8em;
+        margin-bottom: 30px;
+    }
+
+    .content {
+        background-color: #fff;
+        border-radius: 8px;
+        padding: 30px;
+        margin: 0 auto;
+        width: 70%;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    h4 {
+        color: #6c757d; /* Título do produto em tom suave */
+        font-size: 1.5em;
+        margin-bottom: 20px;
+    }
+
+    hr {
+        border: 0;
+        height: 1px;
+        background-color: #e0e0e0;
+        width: 50%;
+        margin: 10px auto;
+    }
+
+    dl {
+        margin-bottom: 20px;
+    }
+
+    dt {
+        font-weight: bold;
+        color: #555;
+    }
+
+    dd {
+        margin-bottom: 10px;
+        color: #777;
+    }
+
+    form {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    input[type="submit"] {
+        background-color: #e57373; /* Vermelho suave */
+        border: none;
+        color: white;
+        padding: 10px 30px;
+        font-size: 1.2em;
+        margin-bottom: 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    input[type="submit"]:hover {
+        background-color: #d32f2f; /* Vermelho mais escuro no hover */
+    }
+
+    a {
+        color: #6c757d; /* Cor suave para o link */
+        text-decoration: none;
+        font-size: 1.2em;
+        padding: 8px 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        margin-left: 10px;
+        transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    a:hover {
+        background-color: #e2e2e2;
+        color: #333;
+    }
+
+    /* Responsividade */
+     screen and (max-width: 768px) {
+        .content {
+            width: 90%;
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 2em;
+        }
+
+        h3 {
+            font-size: 1.5em;
+        }
+
+        input[type="submit"] {
+            width: 100%;
+            font-size: 1.1em;
+        }
+
+        a {
+            font-size: 1em;
+        }
+    }
+</style>
+
+<body>
+    <div class="container">
+        <h1>Deletar</h1>
+        <h3>Você tem certeza que quer deletar isso?</h3>
+        
+        <div class="content">
+            <h4>Produto</h4>
+            <hr />
+            <dl class="row">
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Nome)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Nome)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Estoque)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Estoque)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Categoria)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Categoria.Nome)
+                </dd>
+            </dl>
+        
+            <form asp-action="Delete">
+                <input type="hidden" asp-for="ProdutoId" />
+                <input type="submit" value="Delete" class="btn btn-danger btn-lg" />
+                <a asp-action="Index" class="btn btn-outline-secondary btn-lg">Voltar para a lista</a>
+            </form>
+        </div>
+    </div>
+
+    <!-- Link do Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</head>
+</html>

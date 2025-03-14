@@ -1,0 +1,139 @@
+﻿@model ExemploEF.Models.Produto
+
+@{
+    ViewData["Title"] = "Details";
+}
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+
+
+<!-- Link do Bootstrap CSS -->
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Estilo personalizado -->
+<style>
+    body {
+        font-family: 'Arial', sans-serif;
+        background-color: #f9f9f9; /* Cor de fundo suave */
+        color: #555; /* Cor de texto neutra */
+        margin: 0;
+        padding: 0;
+        line-height: 1.6;
+    }
+
+    h1 {
+        color: #6f8a56; /* Verde suave */
+        text-align: center;
+        margin-top: 40px;
+        font-size: 2.5em;
+    }
+
+    h4 {
+        color: #4e6d3a; /* Verde suave */
+        font-size: 1.8em;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    hr {
+        border: 0;
+        height: 1px;
+        background-color: #e0e0e0; /* Cor neutra para a linha */
+        width: 50%;
+        margin: 20px auto;
+    }
+
+    dl {
+        background-color: #fff; /* Fundo branco para o conteúdo */
+        border-radius: 8px;
+        padding: 20px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    }
+
+    dt {
+        font-weight: bold;
+        color: #6c6c6c; /* Cor neutra para termos */
+    }
+
+    dd {
+        margin-bottom: 10px;
+        color: #777; /* Texto suave */
+        font-size: 1.1em;
+    }
+
+    a {
+        color: #70a673; /* Verde suave */
+        text-decoration: none;
+        font-size: 1.2em;
+        padding: 8px 15px;
+        background-color: #eaf2e6; /* Fundo suave */
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+        margin: 10px;
+    }
+
+    a:hover {
+        background-color: #d1e5d1; /* Fundo ligeiramente mais escuro no hover */
+    }
+
+    .row {
+        margin-bottom: 20px;
+    }
+ screen and (max-width: 768px) {
+        dl {
+            padding: 15px;
+        }
+
+        a {
+            font-size: 1.1em;
+        }
+    }
+</style>
+
+<body>
+    <div class="container">
+        <h1>Detalhes</h1>
+
+        <div>
+            <h4>Produto</h4>
+            <hr />
+            <dl class="row">
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Nome)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Nome)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Estoque)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Estoque)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Categoria)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Categoria.Nome)
+                </dd>
+            </dl>
+        </div>
+
+        <div class="text-center mt-4">
+            <a asp-action="Edit" asp-route-id="@Model?.ProdutoId" class="btn btn-outline-success btn-lg">Editar</a> |
+            <a asp-action="Index" class="btn btn-outline-secondary btn-lg">Voltar para a lista</a>
+        </div>
+    </div>
+</body>
+
+<!-- Link do Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+</html>

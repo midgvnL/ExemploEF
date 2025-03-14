@@ -12,12 +12,17 @@ namespace ExemploEF.Data
         public DbSet<Cliente> Clientes { get; set; }
         public DbSet<Categoria> Categorias { get; set; }
 
+        public DbSet<Produto> Produtos { get; set; }
+
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Cliente>().ToTable("TbClientes");
             modelBuilder.Entity<Categoria>().ToTable("TbCategorias");
+            modelBuilder.Entity<Produto>().ToTable("TbProdutos");
+
+
 
 
         }
